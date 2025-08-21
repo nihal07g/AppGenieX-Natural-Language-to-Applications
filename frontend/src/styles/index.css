@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+/* Utility for card */
+.card {
+  @apply bg-white rounded-2xl shadow-sm border border-gray-100;
+}

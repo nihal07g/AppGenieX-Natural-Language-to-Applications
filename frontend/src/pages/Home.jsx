@@ -43,7 +43,9 @@ export default function Home() {
       <header className="bg-white border-b">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="text-xl font-bold">AppGenieX</h1>
-          <div className="text-sm text-gray-600">{step === 'generate' ? 'Generating…' : 'Ready'}</div>
+          <div className="text-sm text-gray-600">
+            {step === 'generate' ? 'Generating…' : 'Ready'}
+          </div>
         </div>
       </header>
       <main className="max-w-6xl mx-auto px-4 py-6 grid md:grid-cols-3 gap-6">

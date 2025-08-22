@@ -32,7 +32,12 @@ app.use('/api', zipRoute)
 // Error handler
 app.use((err, _req, res, _next) => {
   logger.error(err)
-  res.status(500).json({ ok: false, error: { code: 'INTERNAL_ERROR', message: 'Internal server error' } })
+  res
+    .status(500)
+    .json({
+      ok: false,
+      error: { code: 'INTERNAL_ERROR', message: 'Internal server error' },
+    })
 })
 
 const PORT = process.env.PORT || 5000

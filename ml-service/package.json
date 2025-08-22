@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "install:py": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$env:PYTHONUNBUFFERED='1'; Remove-Item Env:PIP_CERT -ErrorAction SilentlyContinue; Remove-Item Env:REQUESTS_CA_BUNDLE -ErrorAction SilentlyContinue; python -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt\"",
-    "dev": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"$env:PYTHONUNBUFFERED='1'; Remove-Item Env:PIP_CERT -ErrorAction SilentlyContinue; Remove-Item Env:REQUESTS_CA_BUNDLE -ErrorAction SilentlyContinue; python -m pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt; python -m uvicorn app:app --reload --port 5001\"",
+    "install:py": "python -m pip install -r requirements.txt",
+    "dev": "python -m pip install -r requirements.txt && python -m uvicorn app:app --reload --port 5001",
     "lint": "ruff check . && black --check .",
     "format": "black . && ruff check --fix .",
     "test": "pytest -q"

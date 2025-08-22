@@ -12,15 +12,18 @@ app.add_middleware(
     allow_origins=[BACKEND_ORIGIN],
     allow_credentials=False,
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
 )
+
 
 class AnalyzeReq(BaseModel):
     codebaseSummary: dict
 
+
 @app.get("/health")
 async def health():
     return {"ok": True, "data": {"service": "ml-service", "status": "healthy"}}
+
 
 @app.post("/analyze")
 async def analyze(req: AnalyzeReq):

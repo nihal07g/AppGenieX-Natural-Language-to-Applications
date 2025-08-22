@@ -1,7 +1,9 @@
 import fetch from 'node-fetch'
 
 export function summarizeForML(files) {
-  const top = files.slice(0, 20).map((f) => ({ path: f.path, size: (f.content || '').length }))
+  const top = files
+    .slice(0, 20)
+    .map((f) => ({ path: f.path, size: (f.content || '').length }))
   const totalSize = files.reduce((a, f) => a + (f.content || '').length, 0)
   return { files: top, totalSize }
 }

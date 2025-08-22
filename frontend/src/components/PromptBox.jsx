@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { Wand2, Loader2 } from 'lucide-react'
 
 export default function PromptBox({ onGenerate }) {
-  const [prompt, setPrompt] = useState('Build a simple todo app with React and Tailwind.')
+  const [prompt, setPrompt] = useState(
+    'Build a simple todo app with React and Tailwind.',
+  )
   const [loading, setLoading] = useState(false)
 
   async function handleGenerate() {
@@ -17,7 +19,10 @@ export default function PromptBox({ onGenerate }) {
 
   return (
     <div className="card p-4">
-      <label htmlFor="prompt" className="block text-sm font-medium text-gray-700">
+      <label
+        htmlFor="prompt"
+        className="block text-sm font-medium text-gray-700"
+      >
         Describe your app
       </label>
       <textarea
@@ -33,7 +38,11 @@ export default function PromptBox({ onGenerate }) {
         className="mt-3 inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-4 py-2 rounded-lg disabled:opacity-60"
         aria-busy={loading}
       >
-        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Wand2 className="w-4 h-4" />}
+        {loading ? (
+          <Loader2 className="w-4 h-4 animate-spin" />
+        ) : (
+          <Wand2 className="w-4 h-4" />
+        )}
         Generate Code
       </button>
     </div>

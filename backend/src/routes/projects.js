@@ -10,7 +10,12 @@ router.get('/projects', (_req, res) => {
 router.post('/projects', (req, res) => {
   const { name, files } = req.body || {}
   if (!name || !Array.isArray(files)) {
-    return res.status(400).json({ ok: false, error: { code: 'BAD_REQUEST', message: 'Invalid project payload' } })
+    return res
+      .status(400)
+      .json({
+        ok: false,
+        error: { code: 'BAD_REQUEST', message: 'Invalid project payload' },
+      })
   }
   const id = String(Date.now())
   projects.push({ id, name, files, createdAt: new Date().toISOString() })

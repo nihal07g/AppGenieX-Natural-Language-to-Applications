@@ -2,7 +2,11 @@ export default function QualityPanel({ quality }) {
   const q = quality || { maintainability: 70, complexity: 3, coverage: 50 }
   const pct = (v) => (v <= 1 ? Math.round(v * 100) : Math.round(v))
   const items = [
-    { key: 'maintainability', label: 'Maintainability', value: pct(q.maintainability) },
+    {
+      key: 'maintainability',
+      label: 'Maintainability',
+      value: pct(q.maintainability),
+    },
     { key: 'complexity', label: 'Complexity', value: q.complexity },
     { key: 'coverage', label: 'Coverage', value: pct(q.coverage) },
   ]
@@ -19,7 +23,9 @@ export default function QualityPanel({ quality }) {
             <div className="h-2 bg-gray-100 rounded-lg overflow-hidden">
               <div
                 className={`h-full ${m.key === 'complexity' ? 'bg-rose-500' : 'bg-emerald-500'}`}
-                style={{ width: `${Math.min(100, m.key === 'complexity' ? Math.min(100, m.value * 10) : m.value)}%` }}
+                style={{
+                  width: `${Math.min(100, m.key === 'complexity' ? Math.min(100, m.value * 10) : m.value)}%`,
+                }}
               />
             </div>
           </div>

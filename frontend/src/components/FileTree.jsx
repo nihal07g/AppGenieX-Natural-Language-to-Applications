@@ -1,7 +1,9 @@
 export default function FileTree({ files }) {
   if (!files?.length) {
     return (
-      <div className="card p-4 text-gray-500">Generated files will appear here.</div>
+      <div className="card p-4 text-gray-500">
+        Generated files will appear here.
+      </div>
     )
   }
   return (

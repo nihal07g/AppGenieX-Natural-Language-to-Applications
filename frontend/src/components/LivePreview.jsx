@@ -20,9 +20,16 @@ ${js}
 </html>`
 
 function buildClientOnlyBundle(files) {
-  const indexHtml = files.find((f) => /index\.html$/.test(f.path))?.content || ''
-  const js = files.filter((f) => f.path.endsWith('.js') || f.path.endsWith('.jsx')).map((f) => `// ${f.path}\n` + f.content).join('\n')
-  const css = files.filter((f) => f.path.endsWith('.css')).map((f) => f.content).join('\n')
+  const indexHtml =
+    files.find((f) => /index\.html$/.test(f.path))?.content || ''
+  const js = files
+    .filter((f) => f.path.endsWith('.js') || f.path.endsWith('.jsx'))
+    .map((f) => `// ${f.path}\n` + f.content)
+    .join('\n')
+  const css = files
+    .filter((f) => f.path.endsWith('.css'))
+    .map((f) => f.content)
+    .join('\n')
   return { js, css, html: indexHtml }
 }
 
@@ -47,8 +54,8 @@ export default function LivePreview({ files, templateType }) {
       <div className="card p-4">
         <h3 className="font-semibold mb-2">Preview</h3>
         <p className="text-sm text-gray-600">
-          Full-stack projects require running both client and server.
-          Use <code>npm run dev</code> at the repo root and open the app.
+          Full-stack projects require running both client and server. Use{' '}
+          <code>npm run dev</code> at the repo root and open the app.
         </p>
       </div>
     )
@@ -61,7 +68,7 @@ export default function LivePreview({ files, templateType }) {
   const sizes = {
     mobile: 'w-[375px] h-[667px]',
     tablet: 'w-[768px] h-[1024px]',
-    desktop: 'w-full h-[600px]'
+    desktop: 'w-full h-[600px]',
   }
 
   return (
@@ -69,13 +76,23 @@ export default function LivePreview({ files, templateType }) {
       <div className="flex items-center justify-between mb-2">
         <h3 className="font-semibold">Live Preview</h3>
         <div className="flex gap-2">
-          {['mobile','tablet','desktop'].map(v => (
-            <button key={v} onClick={() => setViewport(v)} className={`px-3 py-1 rounded-md border ${viewport===v?'bg-brand-600 text-white border-brand-600':'bg-white text-gray-700 border-gray-200'}`}>{v}</button>
+          {['mobile', 'tablet', 'desktop'].map((v) => (
+            <button
+              key={v}
+              onClick={() => setViewport(v)}
+              className={`px-3 py-1 rounded-md border ${viewport === v ? 'bg-brand-600 text-white border-brand-600' : 'bg-white text-gray-700 border-gray-200'}`}
+            >
+              {v}
+            </button>
           ))}
         </div>
       </div>
       <div className="flex justify-center">
-        <iframe ref={iframeRef} title="preview" className={`${sizes[viewport]} border rounded-xl`}></iframe>
+        <iframe
+          ref={iframeRef}
+          title="preview"
+          className={`${sizes[viewport]} border rounded-xl`}
+        ></iframe>
       </div>
     </div>
   )

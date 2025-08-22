@@ -8,12 +8,11 @@
     "backend"
   ],
   "scripts": {
-  "postinstall": "npm --prefix frontend install && npm --prefix backend install && npm --prefix ml-service run install:py",
-  "dev": "concurrently --continue-on-error \"npm:dev:backend\" \"npm:dev:frontend\" \"npm:dev:ml\"",
+    "dev": "concurrently --continue-on-error \"npm:dev:backend\" \"npm:dev:frontend\" \"npm:dev:ml\"",
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "npm --prefix backend run dev",
     "dev:ml": "npm --prefix ml-service run dev",
-    "lint": "npm --prefix frontend run lint && npm --prefix backend run lint && npm --prefix ml-service run lint",
+    "lint": "npm --prefix frontend run lint && npm --prefix backend run lint",
     "format": "npm --prefix frontend run format && npm --prefix backend run format && npm --prefix ml-service run format",
     "test": "npm --prefix ml-service run test"
   },

@@ -14,7 +14,7 @@ function client() {
   if (!key) return null
   try {
     return new GoogleGenerativeAI(key)
-  } catch (e) {
+  } catch {
     return null
   }
 }
@@ -43,7 +43,7 @@ export async function generateFilesFromPrompt(prompt) {
   const files = Array.isArray(json?.files) ? json.files : []
   if (!files.length) return { files: fallbackTemplates(prompt), testResults: [], qualityReport: { maintainability: 0.7, complexity: 0.3, coverage: 0.5 } }
   return { files: normalizeFiles(files), testResults: json?.testResults || [], qualityReport: json?.qualityReport || { maintainability: 0.7, complexity: 0.3, coverage: 0.5 } }
-  } catch (e) {
+  } catch {
   return { files: fallbackTemplates(prompt), testResults: [], qualityReport: { maintainability: 0.7, complexity: 0.3, coverage: 0.5 } }
   }
 }
@@ -62,7 +62,7 @@ export async function patchFilesWithRequest(featureRequest, currentFiles) {
     const json = safeJsonParse(raw) || safeJsonParse(raw.replace(/```(json)?/g, '').trim())
     const files = Array.isArray(json?.files) ? json.files : null
     return files ? normalizeFiles(files) : currentFiles
-  } catch (e) {
+  } catch {
     return currentFiles
   }
 }

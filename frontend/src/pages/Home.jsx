@@ -8,7 +8,6 @@ import { clientApi } from '../lib/clientApi'
 export default function Home() {
   const [files, setFiles] = useState([])
   const [quality, setQuality] = useState(null)
-  const [testResults, setTestResults] = useState([])
   const [templateType, setTemplateType] = useState('client-only')
   const [step, setStep] = useState('idle')
 
@@ -16,10 +15,9 @@ export default function Home() {
     setStep('generate')
     const res = await clientApi.generateCode(prompt)
     if (res.ok) {
-      const { files: out, qualityReport, templateType: t, testResults: tr } = res.data
+      const { files: out, qualityReport, templateType: t } = res.data
       setFiles(out)
       setQuality(qualityReport)
-      setTestResults(tr || [])
       setTemplateType(t || 'client-only')
       setStep('preview')
     } else {

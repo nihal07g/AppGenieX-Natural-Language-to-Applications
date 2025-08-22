@@ -24,6 +24,8 @@ jobs:
         run: npm --prefix backend install
       - name: Lint backend
         run: npm --prefix backend run lint
+      - name: Test backend
+        run: npm --prefix backend run test
       - name: Build frontend
         run: npm --prefix frontend run build
       - name: Lint frontend
